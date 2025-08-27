@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+
+const { slug } = Astro.params;
+
+// Use import.meta.glob to map available project markdown files
+const projects = import.meta.glob('../../content/projects/*.md');
+
+export async function getStaticPaths() {
+  const map = import.meta.glob('../../content/projects/*.md');
+  const paths = Object.keys(map).map((p) => {
+    const parts = p.split('/');
+    const file = parts[parts.length - 1];
+    const name = file.replace(/\.md$/, '');
+    return { params: { slug: name } };
+  });
+  return paths;
+}
+
+let projectEntry = null;
+for (const path in projects) {
+  if (path.endsWith(`/${slug}.md`)) {
+    projectEntry = projects[path];
+    break;
+  }
+}
+
+if (!projectEntry) {
+  throw new Error(`Project not found: ${slug}`);
+}
+
+const imported = await projectEntry();
+// imported is usually an object with default and frontmatter
+const asAny = /** @type {{ default?: any, frontmatter?: Record<string, any> }} */ (imported || {});
+const ProjectContent = asAny.default;
+const frontmatter = asAny.frontmatter ?? {};
+const title = frontmatter.title ?? slug;
+---
+
+<BaseLayout title={title}>
+  <SEO title={title} />
+
+  <section class="py-12">
+    <div class="container mx-auto max-w-4xl">
+      <h1 class="text-3xl font-playfair mb-6">{title}</h1>
+      <article class="prose">
+        <ProjectContent />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

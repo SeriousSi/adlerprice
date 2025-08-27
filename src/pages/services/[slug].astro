@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+  const map = import.meta.glob('../../content/services/*.md');
+  return Object.keys(map).map((p) => {
+    const parts = p.split('/');
+    const file = parts[parts.length - 1];
+    const name = file.replace(/\.md$/, '');
+    return { params: { slug: name } };
+  });
+}
+
+const services = import.meta.glob('../../content/services/*.md');
+
+let entry = null;
+for (const p in services) {
+  if (p.endsWith(`/${slug}.md`)) {
+    entry = services[p];
+    break;
+  }
+}
+
+if (!entry) {
+  throw new Error(`Service not found: ${slug}`);
+}
+
+const imported = await entry();
+const asAny = /** @type {{ default?: any, frontmatter?: Record<string, any> }} */ (imported || {});
+const ServiceContent = asAny.default;
+const frontmatter = asAny.frontmatter ?? {};
+const title = frontmatter.title ?? slug;
+---
+
+<BaseLayout title={title}>
+  <SEO title={title} />
+
+  <section class="py-12">
+    <div class="container mx-auto max-w-4xl">
+      <h1 class="text-3xl font-playfair mb-6">{title}</h1>
+      <article class="prose">
+        <ServiceContent />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

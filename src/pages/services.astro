@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import SEO from '../components/SEO.astro';
+
+export const Layout = BaseLayout;
+export const title = 'Services | AdlerPrice';
+---
+
+<SEO />
+
+<section class="py-12">
+  <div class="container mx-auto text-center">
+    <h1 class="text-4xl font-playfair mb-6">Our Services</h1>
+    <p class="text-lg text-gray-700 mb-12">At AdlerPrice, we specialize in providing expert consulting services in the following areas:</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <Card title="Architect Negligence Claims" description="Representation and advice on professional liability and claims." href="/content/services/architect-negligence.md" />
+  <Card title="Consulting" description="Project advisory, documentation review and practice consulting." href="/content/services/consulting.md" />
+  <Card title="Design Thinking" description="Facilitated workshops and strategic design processes." href="/content/services/design-thinking.md" />
+    </div>
+  </div>
+</section>

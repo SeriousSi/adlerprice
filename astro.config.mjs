@@ -1,17 +1,13 @@
-// @ts-check
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-
-import cloudflare from "@astrojs/cloudflare";
-
-// https://astro.build/config
-export default defineConfig({
-  site: "https://example.com",
-  integrations: [mdx(), sitemap()],
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
+export default {
+  site: 'https://adlerprice.com',
+  title: 'AdlerPrice - Consulting, Negligence Claims, Design Thinking',
+  description: 'AdlerPrice is a Cape Town-based consulting practice specializing in Architect Negligence Claims, Consulting, and Design Thinking since 1988.',
+  markdown: {
+    shikiConfig: {
+      theme: 'nord',
     },
-  }),
-});
+  },
+  integrations: [
+    // Add any integrations here
+  ],
+};

@@ -1,0 +1,32 @@
+<header class="sticky top-0 z-40 border-b border-gray-100 bg-white/60 backdrop-blur-sm">
+  <div class="container flex items-center justify-between py-4">
+  <a href="/" class="text-lg font-playfair" style="color:var(--color-text);">AdlerPrice</a>
+
+    <nav aria-label="Primary navigation" class="hidden md:block">
+      <ul class="flex items-center space-x-8 text-sm" style="color:var(--color-muted)">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+  <div aria-hidden="true"></div>
+    <div class="md:hidden">
+      <button aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')" class="text-gray-700">Menu</button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden md:hidden border-t border-gray-100">
+    <nav class="container py-4">
+      <ul class="flex flex-col space-y-3 text-gray-700">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

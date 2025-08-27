@@ -1,6 +1,6 @@
 {
   "name": "adlerprice",
-  "description": "Build a personal website, blog, or portfolio with Astro.",
+  "description": "Cape Town-based consulting practice specializing in Architect Negligence Claims, Consulting, and Design Thinking.",
   "private": true,
   "cloudflare": {
     "label": "Astro Framework Starter",
@@ -20,7 +20,10 @@
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.4.1",
     "astro": "5.10.1",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "tailwindcss": "^3.0.0",
+    "postcss": "^8.0.0",
+    "autoprefixer": "^10.0.0"
   },
   "devDependencies": {
     "wrangler": "4.21.x"

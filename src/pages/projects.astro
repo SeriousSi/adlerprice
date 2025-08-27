@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import SEO from '../components/SEO.astro';
+
+export const Layout = BaseLayout;
+export const title = 'Projects - AdlerPrice';
+---
+
+<SEO title="Projects - AdlerPrice" />
+
+<section class="py-12">
+  <div class="container mx-auto">
+    <h1 class="text-4xl font-playfair mb-8">Our Projects</h1>
+    <p class="text-lg mb-12">At AdlerPrice, we take pride in our diverse portfolio, showcasing our expertise in various scales and complexities. Here are some selected projects:</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <Card title="Luxury Home" description="Early experience in high-end residential design." image="/projects/luxury-home.svg" href="/content/projects/luxury-home-1.md" />
+  <Card title="Strategic Planning" description="Large-scale planning and multi-storey developments." image="/projects/strategic-planning.svg" href="/content/projects/strategic-planning-1.md" />
+  <Card title="Modest Intervention" description="Incisive interventions using modest materials." image="/projects/modest-intervention.svg" href="/content/projects/modest-intervention-1.md" />
+    </div>
+  </div>
+</section>

@@ -2,9 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
-export const Layout = BaseLayout;
 export const title = 'Contact';
 ---
+
+<BaseLayout title={title}>
 
 <section class="py-12 px-4">
   <div class="max-w-2xl mx-auto text-center">
@@ -19,3 +20,5 @@ export const title = 'Contact';
     </div>
   </div>
 </section>
+
+</BaseLayout>

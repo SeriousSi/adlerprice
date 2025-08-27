@@ -1,25 +1,118 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
 
-export const Layout = BaseLayout;
 export const title = "AdlerPrice - Consulting, Negligence Claims, Design Thinking";
 export const description = "Welcome to AdlerPrice, a Cape Town-based consulting practice specializing in Architect Negligence Claims, Consulting, and Design Thinking since 1988.";
 ---
+<BaseLayout title={title}>
 
-<Hero />
+  <Hero />
+<!-- 1. Hero CTA (kept in Hero component) -->
 
-<section class="py-12 px-4">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-playfair mb-4">Welcome to AdlerPrice</h2>
-    <p class="text-lg text-gray-700 mb-8">
-      Since 1988, AdlerPrice has been dedicated to delivering exceptional consulting services, specializing in Architect Negligence Claims, Consulting, and Design Thinking. Our approach combines strong design principles with meticulous project administration, ensuring successful outcomes for projects of all scales.
-    </p>
-    <div class="flex justify-center space-x-4">
-  <a href="/about" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-deep-blue-dark transition">Learn More About Us</a>
-      <a href="/services" class="bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition">Our Services</a>
-      <a href="/projects" class="bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition">View Our Projects</a>
-  <a href="/contact" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-deep-blue-dark transition">Contact Us</a>
+<!-- 2. About Snapshot -->
+<section class="py-12">
+  <div class="container max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h2 class="text-2xl font-playfair mb-3">About AdlerPrice</h2>
+      <p class="text-gray-700 mb-4">Founded in Cape Town in 1988, AdlerPrice has applied general design, documentation, and project administration skills—rooted in early luxury-home experience—to an extensive range of complex projects across varied scales.</p>
+      <a href="/about" class="inline-block mt-2 text-deep-blue font-medium">Learn More</a>
+    </div>
+    <div class="hidden md:block">
+      <img src="/projects/modest-intervention.svg" alt="Architectural detail" class="w-full grayscale opacity-90 rounded" />
     </div>
   </div>
 </section>
+
+<!-- 3. Services Overview -->
+<section class="py-12 bg-gray-50">
+  <div class="container max-w-6xl mx-auto">
+    <h2 class="text-2xl font-playfair text-center mb-8">Services</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <Card title="Strategic Definition" description="Initial appraisal, context/legal assessment, feasibility studies, project requirements and strategy." href="/services#strategic-definition" />
+      <Card title="Concept & Design Development" description="Concept design, sustainability planning, maintenance and handover strategy, and developing design documentation." href="/services#concept-design" />
+      <Card title="Technical Documentation to Handover" description="Technical design, energy modelling, tender documentation, site administration, and project close-out." href="/services#technical-documentation" />
+    </div>
+    <div class="text-center mt-6">
+      <a href="/services" class="btn-outline">Read all services</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Our Approach / Values -->
+<section class="py-12">
+  <div class="container max-w-5xl mx-auto">
+    <h2 class="text-2xl font-playfair text-center mb-6">Our Approach</h2>
+    <p class="text-center text-gray-700 mb-6">We prioritise understanding, sustainability and value-led interventions — constructive conservation, adaptive reuse, and fresh thinking guide our work.</p>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="p-4 border rounded">
+        <h3 class="font-playfair mb-2">Understanding</h3>
+        <p class="text-sm text-gray-600">Contextual research and client engagement to define the right brief.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="font-playfair mb-2">Environment & Sustainability</h3>
+        <p class="text-sm text-gray-600">Design choices that reduce impact and improve long-term performance.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="font-playfair mb-2">Conservation</h3>
+        <p class="text-sm text-gray-600">Constructive conservation and heritage-sensitive interventions.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="font-playfair mb-2">Fresh Thinking</h3>
+        <p class="text-sm text-gray-600">Practical creativity applied across project scales.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="font-playfair mb-2">Adding Value by Design</h3>
+        <p class="text-sm text-gray-600">Design-led solutions that enhance function and value.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="font-playfair mb-2">Adaptive Reuse</h3>
+        <p class="text-sm text-gray-600">Repurposing buildings, including heritage projects such as Robben Island.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Selected Projects -->
+<section class="py-12 bg-gray-50">
+  <div class="container max-w-6xl mx-auto">
+    <h2 class="text-2xl font-playfair text-center mb-8">Selected Projects</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="rounded overflow-hidden">
+        <img src="/projects/luxury-home.svg" alt="Luxury Home" class="w-full h-44 object-cover" />
+        <div class="p-4">
+          <h3 class="font-playfair">Luxury Residential Intervention, Cape Town</h3>
+        </div>
+      </article>
+
+      <article class="rounded overflow-hidden">
+        <img src="/projects/modest-intervention.svg" alt="Modest Intervention" class="w-full h-44 object-cover" />
+        <div class="p-4">
+          <h3 class="font-playfair">Modest Material Intervention</h3>
+        </div>
+      </article>
+
+      <article class="rounded overflow-hidden">
+        <img src="/projects/strategic-planning.svg" alt="Strategic Planning" class="w-full h-44 object-cover" />
+        <div class="p-4">
+          <h3 class="font-playfair">Multi-storey Strategic Development</h3>
+        </div>
+      </article>
+    </div>
+    <div class="text-center mt-6">
+      <a href="/projects" class="btn-outline">See all projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Contact CTA -->
+<section class="py-12">
+  <div class="container max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl font-playfair mb-3">Ready to discuss your project or claim?</h2>
+    <p class="text-gray-700 mb-6">Let’s start the conversation — Cape Town based, decades of local expertise.</p>
+    <a href="/contact" class="btn-primary">Get in Touch</a>
+  </div>
+</section>
+
+</BaseLayout>

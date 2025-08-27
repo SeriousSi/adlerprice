@@ -3,9 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 import SEO from '../components/SEO.astro';
 
-export const Layout = BaseLayout;
 export const title = 'Projects - AdlerPrice';
 ---
+
+<BaseLayout title={title}>
 
 <SEO title="Projects - AdlerPrice" />
 
@@ -21,3 +22,5 @@ export const title = 'Projects - AdlerPrice';
     </div>
   </div>
 </section>
+
+</BaseLayout>

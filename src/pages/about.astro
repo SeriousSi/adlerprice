@@ -1,10 +1,10 @@
 ---
----
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-export const Layout = BaseLayout;
 export const title = 'About AdlerPrice';
 ---
+
+<BaseLayout title={title}>
 
 <section class="py-12 px-6">
   <h1 class="text-4xl font-playfair mb-6">About AdlerPrice</h1>
@@ -23,3 +23,5 @@ export const title = 'About AdlerPrice';
     Our expertise spans various sectors, allowing us to tackle complex challenges with innovative solutions. We are committed to continuous learning and adapting to the evolving landscape of architecture and design.
   </p>
 </section>
+
+</BaseLayout>

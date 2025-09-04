@@ -124,6 +124,42 @@ a:hover {
   background: rgba(0,0,0,0.03);
 }
 
+/* Navigation link styles */
+.nav-list { color: var(--color-muted); }
+.nav-link {
+  color: inherit;
+  padding: 0.25rem 0;
+  position: relative;
+  transition: color 150ms ease, opacity 150ms ease;
+  color: var(--color-muted);
+}
+.nav-link:hover {
+  color: var(--color-text);
+}
+/* Active/selected tab */
+.nav-link--active {
+  color: var(--accent);
+  font-weight: 600;
+}
+/* Small underline indicator for active tab */
+.nav-link--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  bottom: -6px;
+  border-radius: 4px;
+}
+
+/* Mobile: make the active link slightly more visible */
+@media (max-width: 767px) {
+  .nav-link--active {
+    color: var(--accent);
+  }
+}
+
 /* Responsive spacing helpers (small, minimal) */
 .section { padding-top: 3rem; padding-bottom: 3rem; }
 .section--narrow { padding-top: 2rem; padding-bottom: 2rem; max-width: 900px; margin-left:auto; margin-right:auto; }

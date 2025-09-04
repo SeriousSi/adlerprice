@@ -1,9 +1,11 @@
 ---
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 
-const { title = 'AdlerPrice' } = Astro.props;
+const { title = "AdlerPrice" } = Astro.props;
+// current path is passed to the Nav component so it can highlight the active tab
+const currentPath = Astro.url?.pathname ?? "/";
 ---
 
 <!doctype html>
@@ -11,14 +13,14 @@ const { title = 'AdlerPrice' } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <slot name="head" />
-  <title>{title}</title>
+    <slot name="head" />
+    <title>{title}</title>
   </head>
   <body>
     <a class="sr-only" href="#main">Skip to content</a>
 
     <main id="main" class="min-h-screen flex flex-col">
-      <Nav />
+      <Nav currentPath={currentPath} />
       <section class="flex-grow">
         <slot />
       </section>

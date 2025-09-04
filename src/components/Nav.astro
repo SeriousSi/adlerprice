@@ -1,18 +1,30 @@
+---
+// receive currentPath from layout (Astro provides URL via props)
+const { currentPath = '/' } = Astro.props;
+
+// helper to test if a link should be active. Treat root and '/index' equivalently.
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  // active when path starts with the href (so /projects/slug keeps Projects active)
+  return currentPath === href || currentPath.startsWith(href + '/');
+};
+---
+
 <header class="sticky top-0 z-40 border-b border-gray-100 bg-white/60 backdrop-blur-sm">
   <div class="container flex items-center justify-between py-4">
-  <a href="/" class="text-lg font-playfair" style="color:var(--color-text);">AdlerPrice</a>
+    <a href="/" class="text-lg font-playfair nav-brand" style="color:var(--color-text);">AdlerPrice</a>
 
     <nav aria-label="Primary navigation" class="hidden md:block">
-      <ul class="flex items-center space-x-8 text-sm" style="color:var(--color-muted)">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/contact">Contact</a></li>
+      <ul class="flex items-center space-x-8 text-sm nav-list">
+        <li><a class={"nav-link" + (isActive('/') ? ' nav-link--active' : '')} href="/" aria-current={isActive('/') ? 'page' : null}>Home</a></li>
+        <li><a class={"nav-link" + (isActive('/about') ? ' nav-link--active' : '')} href="/about" aria-current={isActive('/about') ? 'page' : null}>About</a></li>
+        <li><a class={"nav-link" + (isActive('/services') ? ' nav-link--active' : '')} href="/services" aria-current={isActive('/services') ? 'page' : null}>Services</a></li>
+        <li><a class={"nav-link" + (isActive('/projects') ? ' nav-link--active' : '')} href="/projects" aria-current={isActive('/projects') ? 'page' : null}>Projects</a></li>
+        <li><a class={"nav-link" + (isActive('/contact') ? ' nav-link--active' : '')} href="/contact" aria-current={isActive('/contact') ? 'page' : null}>Contact</a></li>
       </ul>
     </nav>
 
-  <div aria-hidden="true"></div>
+    <div aria-hidden="true"></div>
     <div class="md:hidden">
       <button aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')" class="text-gray-700">Menu</button>
     </div>
@@ -21,11 +33,11 @@
   <div id="mobile-nav" class="hidden md:hidden border-t border-gray-100">
     <nav class="container py-4">
       <ul class="flex flex-col space-y-3 text-gray-700">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a class={"nav-link" + (isActive('/') ? ' nav-link--active' : '')} href="/" aria-current={isActive('/') ? 'page' : null}>Home</a></li>
+        <li><a class={"nav-link" + (isActive('/about') ? ' nav-link--active' : '')} href="/about" aria-current={isActive('/about') ? 'page' : null}>About</a></li>
+        <li><a class={"nav-link" + (isActive('/services') ? ' nav-link--active' : '')} href="/services" aria-current={isActive('/services') ? 'page' : null}>Services</a></li>
+        <li><a class={"nav-link" + (isActive('/projects') ? ' nav-link--active' : '')} href="/projects" aria-current={isActive('/projects') ? 'page' : null}>Projects</a></li>
+        <li><a class={"nav-link" + (isActive('/contact') ? ' nav-link--active' : '')} href="/contact" aria-current={isActive('/contact') ? 'page' : null}>Contact</a></li>
       </ul>
     </nav>
   </div>
